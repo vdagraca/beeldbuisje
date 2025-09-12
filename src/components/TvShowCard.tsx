@@ -6,6 +6,7 @@ export function TvShowCard({ show }: { show: TvShow }) {
     <Card sx={{ width: "200px" }}>
       <Typography variant="h5">{show.name}</Typography>
       <Typography variant="body2">{show.summary}</Typography>
+      <Typography variant="body2">Genres: {show.genres.join(", ")}</Typography>
       <Button variant="contained" color="primary">
         Kijklijst
       </Button>
