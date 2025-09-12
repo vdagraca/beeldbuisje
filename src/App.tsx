@@ -1,24 +1,15 @@
 import { useEffect, useState } from "react";
-import { getTvShows } from "./services/getTvShows";
 import type { TvShow } from "./types/TvShow";
 import { TvShowList } from "./components/TvShowList";
 import { SearchSection } from "./components/SearchSection";
+import { useTvShows } from "./hooks/useTvShows";
 
 function App() {
-  const [tvShows, setTvShows] = useState<TvShow[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { tvShows, loading, error } = useTvShows();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredTvShows, setFilteredTvShows] = useState<TvShow[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<string>("");
-
-  useEffect(() => {
-    getTvShows()
-      .then(setTvShows)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
 
   useEffect(() => {
     setFilteredTvShows(tvShows);
