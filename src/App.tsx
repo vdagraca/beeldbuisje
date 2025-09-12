@@ -9,6 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredTvShows, setFilteredTvShows] = useState<TvShow[]>([]);
 
   useEffect(() => {
     getTvShows()
@@ -18,7 +19,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setTvShows((shows) => filterTvShows(shows, searchTerm));
+    setFilteredTvShows(tvShows);
+  }, [tvShows]);
+
+  useEffect(() => {
+    setFilteredTvShows(filterTvShows(tvShows, searchTerm));
   }, [searchTerm]);
 
   if (loading) return <p>Loading...</p>;
@@ -28,7 +33,7 @@ function App() {
     <>
       <h1>TV Shows</h1>
       <SearchSection searchTerm={searchTerm} onChange={setSearchTerm} />
-      <TvShowList tvShows={tvShows} />
+      <TvShowList tvShows={filteredTvShows} />
     </>
   );
 }

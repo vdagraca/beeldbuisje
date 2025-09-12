@@ -7,7 +7,7 @@ export function TvShowCard({ show }: { show: TvShow }) {
       <Typography variant="h5">{show.name}</Typography>
       <Typography variant="body2">{show.summary}</Typography>
       <Button variant="contained" color="primary">
-        Favourite
+        Kijklijst
       </Button>
     </Card>
   );
