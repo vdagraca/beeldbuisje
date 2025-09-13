@@ -43,7 +43,6 @@ const StyledCard = styled(Box)`
   height: 400px;
   width: 200px;
   border: 1px solid #ccc;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 8px;
