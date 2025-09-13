@@ -19,7 +19,7 @@ describe("useFilteredTvShows", () => {
 
   it("returns all shows by default", () => {
     const { result } = renderHook(() => useFilteredTvShows());
-    expect(result.current.tvShows).toHaveLength(2);
+    expect(result.current.tvShows).toHaveLength(5);
   });
 
   it("filters by search term", () => {
@@ -36,18 +36,24 @@ describe("useFilteredTvShows", () => {
     act(() => {
       result.current.setSelectedGenre("Comedy");
     });
-    expect(result.current.tvShows).toHaveLength(1);
+    expect(result.current.tvShows).toHaveLength(3);
     expect(result.current.tvShows[0].name).toBe("Friends");
   });
 
   it("filters by search term and genre", () => {
     const { result } = renderHook(() => useFilteredTvShows());
     act(() => {
-      result.current.setSearchTerm("friends");
+      result.current.setSearchTerm("br");
+    });
+    expect(result.current.tvShows).toHaveLength(2);
+    act(() => {
+      result.current.setSelectedGenre("Crime");
+    });
+    expect(result.current.tvShows).toHaveLength(2);
+    act(() => {
       result.current.setSelectedGenre("Comedy");
     });
     expect(result.current.tvShows).toHaveLength(1);
-    expect(result.current.tvShows[0].name).toBe("Friends");
   });
 
   it("returns empty when no match", () => {

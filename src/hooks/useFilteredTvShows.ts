@@ -4,7 +4,7 @@ import { useTvShows } from "./useTvShows";
 export function useFilteredTvShows() {
   const { tvShows, loading, error } = useTvShows();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("all genres");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   const filteredTvShows = useMemo(() => {
     return tvShows
@@ -14,6 +14,7 @@ export function useFilteredTvShows() {
       .filter(
         (show) =>
           selectedGenre === "all genres" ||
+          selectedGenre === "" ||
           show.genres.some(
             (g) => g.toLowerCase() === selectedGenre.toLowerCase()
           )

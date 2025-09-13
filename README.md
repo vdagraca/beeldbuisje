@@ -1,69 +1,80 @@
-# React + TypeScript + Vite
+    # 📺 Beeldbuisje
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+    Beeldbuisje is a modern React + TypeScript web app for discovering, searching, and managing your favorite TV shows. Add shows to your personal watchlist, explore genres, and enjoy a clean, responsive UI built with Material-UI and styled-components.
 
-Currently, two official plugins are available:
+    ## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    - 🔍 **Search TV Shows:** Instantly search and filter shows by name or genre.
+    - ⭐ **Watchlist:** Add or remove shows from your personal watchlist, stored in your browser.
+    - 🖼️ **Show Details:** View detailed info, genres, and images for each show.
+    - 🎨 **Modern UI:** Responsive design using Material-UI and styled-components.
+    - ⚡ **Fast & Reliable:** Built with Vite for lightning-fast development and builds.
+    - 🧪 **Tested:** Robust unit and integration tests with Vitest and React Testing Library.
 
-## Expanding the ESLint configuration
+    ## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    ### Prerequisites
+    - Node.js (v18 or higher recommended)
+    - npm or yarn
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    ### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+    ### Development
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+    Open [http://localhost:5173](http://localhost:5173) to view the app in your browser.
+
+    ### Running Tests
+
+    ```bash
+    npm run test
+    # or
+    yarn test
+    ```
+
+    ## Project Structure
+
+    ```
+    beeldbuisje/
+    ├── public/                # Static assets
+    ├── src/
+    │   ├── components/        # React components
+    │   ├── hooks/             # Custom React hooks
+    │   ├── services/          # API calls and data fetching
+    │   ├── state/             # Context and state management
+    │   ├── tests/             # Unit and integration tests
+    │   ├── types/             # TypeScript types
+    │   └── utils/             # Utility functions
+    ├── index.html
+    ├── package.json
+    ├── tsconfig.json
+    ├── vite.config.ts
+    └── README.md
+    ```
+
+    ## Tech Stack
+    - **React** (with hooks)
+    - **TypeScript**
+    - **Vite**
+    - **Material-UI**
+    - **styled-components**
+    - **Vitest** & **React Testing Library**
+
+    ---
+
+    Made with ❤️ by [vdagraca](https://github.com/vdagraca)
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```

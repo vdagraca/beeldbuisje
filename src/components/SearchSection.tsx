@@ -1,4 +1,11 @@
-import { Box, FormControl, MenuItem, Select, TextField } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 type SearchSectionProps = {
   searchTerm: string;
   onChangeTextInput: (term: string) => void;
@@ -24,11 +31,14 @@ export function SearchSection({
         onChange={(e) => onChangeTextInput(e.target.value)}
       />
       <FormControl fullWidth>
+        <InputLabel id="genre-label">Genre</InputLabel>
         <Select
+          labelId="genre-label"
+          label="Genre"
           value={selectedGenre}
           onChange={(e) => onChangeSelect(e.target.value)}
         >
-          <MenuItem value="">Alle genres</MenuItem>
+          <MenuItem value="all genres">Alle genres</MenuItem>
           {genres?.map((genre) => (
             <MenuItem value={genre} key={genre}>
               {genre}

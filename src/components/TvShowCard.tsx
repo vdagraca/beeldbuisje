@@ -17,6 +17,16 @@ export default function TvShowCard({
 }: TvShowCardProps) {
   const { updateWatchList, watchList } = useWatchListContext();
 
+  const variant = watchList.some((s) => s.id === show.id)
+    ? "contained"
+    : "outlined";
+
+  function handleButtonClick(e: React.MouseEvent) {
+    e.stopPropagation();
+    e.preventDefault();
+    updateWatchList(show);
+  }
+
   return (
     <Link
       to={`/shows/${show.id}`}
@@ -33,17 +43,9 @@ export default function TvShowCard({
           <Typography variant="body2">{show.genres.join(" | ")}</Typography>
           {!hideButton && (
             <Button
-              variant={
-                watchList.some((s) => s.id === show.id)
-                  ? "contained"
-                  : "outlined"
-              }
+              variant={variant}
               color="primary"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                updateWatchList(show);
-              }}
+              onClick={handleButtonClick}
             >
               Kijklijst
             </Button>
