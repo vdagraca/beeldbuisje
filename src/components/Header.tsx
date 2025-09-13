@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 type HeaderProps = {
   onOpenWatchList: () => void;
@@ -8,9 +9,19 @@ type HeaderProps = {
 export function Header({ onOpenWatchList }: HeaderProps) {
   return (
     <StyledHeader>
-      <h1>TV Shows</h1>
+      <Box display="flex" alignItems="center" gap={2}>
+        <h1>TV Shows</h1>
+        <Button
+          variant="contained"
+          color="primary"
+          to="/"
+          component={RouterLink}
+        >
+          Home
+        </Button>
+      </Box>
       <Button variant="contained" color="primary" onClick={onOpenWatchList}>
-        Kijklijst
+        Mijn Kijklijst
       </Button>
     </StyledHeader>
   );

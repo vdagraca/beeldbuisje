@@ -1,3 +1,3 @@
-export function ShowDetail() {
+export function TvShowDetail() {
   return <div>ShowDetail</div>;
 }

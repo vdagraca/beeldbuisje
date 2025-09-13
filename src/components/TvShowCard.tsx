@@ -6,7 +6,6 @@ import { styled } from "styled-components";
 
 export function TvShowCard({ show }: { show: TvShow }) {
   const { updateWatchList, watchList } = useWatchListContext();
-  // const navigate = useNavigate();
 
   return (
     <Link
@@ -15,8 +14,7 @@ export function TvShowCard({ show }: { show: TvShow }) {
     >
       <StyledCard>
         <Typography variant="h5">{show.name}</Typography>
-        <img src={show.image?.medium} alt={show.name} />
-        <Typography variant="body2">{show.summary}</Typography>
+        <img loading="lazy" src={show.image?.medium} alt={show.name} />
         <Typography variant="body2">
           Genres: {show.genres.join(", ")}
         </Typography>
@@ -25,7 +23,11 @@ export function TvShowCard({ show }: { show: TvShow }) {
             watchList.some((s) => s.id === show.id) ? "contained" : "outlined"
           }
           color="primary"
-          onClick={() => updateWatchList(show)}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            updateWatchList(show);
+          }}
         >
           Kijklijst
         </Button>
