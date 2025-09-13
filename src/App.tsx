@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import { Home } from "./components/Home";
 import { WatchListProvider } from "./state/watchListContext";
 import { TvShowDetail } from "./components/TvShowDetail";
 import { Header } from "./components/Header";

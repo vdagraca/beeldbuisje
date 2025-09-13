@@ -3,8 +3,9 @@ import { useFilteredTvShows } from "../hooks/useFilteredTvShows";
 import { getGenres } from "../utils/getGenres";
 import { Container } from "@mui/material";
 import { ListWrapper } from "./ListWrapper";
+import { Loader } from "./Loader";
 
-function Home() {
+export function Home() {
   const {
     tvShows,
     loading,
@@ -15,7 +16,7 @@ function Home() {
     setSelectedGenre,
   } = useFilteredTvShows();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -31,5 +32,3 @@ function Home() {
     </Container>
   );
 }
-
-export default Home;

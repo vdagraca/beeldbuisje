@@ -1,11 +1,4 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Box, FormControl, MenuItem, Select, TextField } from "@mui/material";
 type SearchSectionProps = {
   searchTerm: string;
   onChangeTextInput: (term: string) => void;
