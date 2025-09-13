@@ -1,10 +1,10 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 import type { TvShow } from "../types/TvShow";
 import { useWatchListContext } from "../state/useWatchListContext";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
-export function TvShowCard({ show }: { show: TvShow }) {
+export default function TvShowCard({ show }: { show: TvShow }) {
   const { updateWatchList, watchList } = useWatchListContext();
 
   return (
@@ -12,9 +12,8 @@ export function TvShowCard({ show }: { show: TvShow }) {
       to={`/shows/${show.id}`}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      <StyledCard>
+      <StyledCard image={show.image?.original}>
         <Typography variant="h5">{show.name}</Typography>
-        <img loading="lazy" src={show.image?.medium} alt={show.name} />
         <Typography variant="body2">
           Genres: {show.genres.join(", ")}
         </Typography>
@@ -36,7 +35,11 @@ export function TvShowCard({ show }: { show: TvShow }) {
   );
 }
 
-const StyledCard = styled.div`
+const StyledCard = styled.div<{ image?: string }>`
+  height: 300px;
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
   width: 200px;
   border: 1px solid #ccc;
   border-radius: 8px;

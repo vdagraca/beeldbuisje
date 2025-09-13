@@ -2,6 +2,7 @@ import { TvShowList } from "./TvShowList";
 import { SearchSection } from "./SearchSection";
 import { useFilteredTvShows } from "../hooks/useFilteredTvShows";
 import { getGenres } from "../utils/getGenres";
+import { Container } from "@mui/material";
 
 function Home() {
   const {
@@ -18,7 +19,7 @@ function Home() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
+    <Container maxWidth="lg">
       <SearchSection
         searchTerm={searchTerm}
         onChangeTextInput={setSearchTerm}
@@ -27,7 +28,7 @@ function Home() {
         selectedGenre={selectedGenre}
       />
       <TvShowList tvShows={tvShows} />
-    </>
+    </Container>
   );
 }
 

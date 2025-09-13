@@ -22,7 +22,7 @@ export function SearchSection({
   selectedGenre,
 }: SearchSectionProps) {
   return (
-    <Box>
+    <Box display={"flex"} gap={2} padding={2}>
       <TextField
         label="Search TV Shows"
         variant="outlined"
@@ -31,7 +31,6 @@ export function SearchSection({
         onChange={(e) => onChangeTextInput(e.target.value)}
       />
       <FormControl fullWidth>
-        <InputLabel id="filter-label">Filter</InputLabel>
         <Select
           value={selectedGenre}
           onChange={(e) => onChangeSelect(e.target.value)}
