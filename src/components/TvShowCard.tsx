@@ -19,9 +19,7 @@ export default function TvShowCard({ show }: { show: TvShow }) {
           loading="lazy"
         />
         <StyledContent>
-          <Typography variant="body2">
-            Genres: {show.genres.join(", ")}
-          </Typography>
+          <Typography variant="body2">{show.genres.join(" | ")}</Typography>
           <Button
             variant={
               watchList.some((s) => s.id === show.id) ? "contained" : "outlined"
@@ -42,8 +40,7 @@ export default function TvShowCard({ show }: { show: TvShow }) {
 }
 
 const StyledCard = styled(Box)`
-  height: 300px;
-  position: relative;
+  height: 400px;
   width: 200px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -53,18 +50,17 @@ const StyledCard = styled(Box)`
 `;
 
 const StyledCardImage = styled.img`
-  display: absolute;
-  inset: 0;
+  height: 300px;
   width: 100%;
-  height: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 `;
 
 const StyledContent = styled(Box)`
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  height: 90px;
   padding: 8px;
-  margin-top: 200px;
 `;

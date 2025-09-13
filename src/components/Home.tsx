@@ -1,8 +1,8 @@
-import { TvShowList } from "./TvShowList";
 import { SearchSection } from "./SearchSection";
 import { useFilteredTvShows } from "../hooks/useFilteredTvShows";
 import { getGenres } from "../utils/getGenres";
 import { Container } from "@mui/material";
+import { ListWrapper } from "./ListWrapper";
 
 function Home() {
   const {
@@ -27,7 +27,7 @@ function Home() {
         onChangeSelect={setSelectedGenre}
         selectedGenre={selectedGenre}
       />
-      <TvShowList tvShows={tvShows} />
+      <ListWrapper tvShows={tvShows} />
     </Container>
   );
 }
