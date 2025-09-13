@@ -4,13 +4,24 @@ import { useWatchListContext } from "../state/useWatchListContext";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
-export default function TvShowCard({ show }: { show: TvShow }) {
+type TvShowCardProps = {
+  show: TvShow;
+  hideButton?: boolean;
+  onClick?: () => void;
+};
+
+export default function TvShowCard({
+  show,
+  hideButton,
+  onClick,
+}: TvShowCardProps) {
   const { updateWatchList, watchList } = useWatchListContext();
 
   return (
     <Link
       to={`/shows/${show.id}`}
       style={{ textDecoration: "none", color: "inherit" }}
+      onClick={onClick}
     >
       <StyledCard>
         <StyledCardImage
@@ -20,19 +31,23 @@ export default function TvShowCard({ show }: { show: TvShow }) {
         />
         <StyledContent>
           <Typography variant="body2">{show.genres.join(" | ")}</Typography>
-          <Button
-            variant={
-              watchList.some((s) => s.id === show.id) ? "contained" : "outlined"
-            }
-            color="primary"
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              updateWatchList(show);
-            }}
-          >
-            Kijklijst
-          </Button>
+          {!hideButton && (
+            <Button
+              variant={
+                watchList.some((s) => s.id === show.id)
+                  ? "contained"
+                  : "outlined"
+              }
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                updateWatchList(show);
+              }}
+            >
+              Kijklijst
+            </Button>
+          )}
         </StyledContent>
       </StyledCard>
     </Link>
